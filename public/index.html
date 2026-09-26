@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>壁毯织补定位网校核</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>壁毯织补定位网校核</h1>
+    <p class="sub">每个单元视为连续双线性形变；翻折判定基于角点定理的连续证明，不做有限采样替代。</p>
+  </header>
+
+  <main>
+    <section class="card" id="setup-card">
+      <h2>1. 定位网设置</h2>
+      <div class="row">
+        <label>行数（单元）
+          <select id="rows-select">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <label>列数（单元）
+          <select id="cols-select">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </label>
+        <span class="note">原网为单位整数格：网结 (行 r, 列 c) 的原坐标即 (c, r)。</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>2. 织补后网结（拖动或录入整数坐标）</h2>
+      <div class="canvas-wrap">
+        <svg id="grid-svg" role="img" aria-label="定位网画布"></svg>
+      </div>
+      <p class="hint">灰色为原网参考格；彩色为织补后网格。拖动网结自动吸附整数坐标，也可在下表直接录入。</p>
+      <div id="node-table" class="node-table"></div>
+    </section>
+
+    <section class="card">
+      <h2>3. 纹样标记（原网坐标，3–12 个）</h2>
+      <div id="marker-table"></div>
+      <button id="add-marker" type="button" class="btn-secondary">＋ 添加标记</button>
+    </section>
+
+    <section class="card verify-card">
+      <button id="verify-btn" type="button" class="btn-primary">校核</button>
+      <span id="stale-badge" class="stale-badge" hidden>⚠ 网格或标记已修改，旧结论已失效，请重新校核</span>
+    </section>
+
+    <section class="card" id="results-card">
+      <h2>4. 校核结果</h2>
+      <div id="results"><p class="muted">尚未校核。完成设置后点击「校核」。</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>判定依据：双线性映射的雅可比行列式关于 (u,v) 分别线性，最小值必在角点取得；四角 J &gt; 0 ⟺ 单元内部处处不翻折。相邻单元共享同一对网结，跨边连续为结构性保证。</p>
+  </footer>
+
+  <script src="/geometry.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

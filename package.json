@@ -1,0 +1,15 @@
+{
+  "name": "tapestry-grid-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "壁毯织补定位网校核：连续双线性形变换算与全网无翻折判定",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test",
+    "verify": "node verify.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
